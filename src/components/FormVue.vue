@@ -2,8 +2,10 @@
   <form className="form">
     <div className="form__title">NFT Access</div>
     <div className="form__desc">Please fill your detail to access your account.</div>
+   
     <InputElement title='Email' name='email' type='email' placeholder='Your email' />
     <InputElement title='Password' name='password' type='password' placeholder='Your password' />
+    
     <div className="row">
           <CheckboxElement desc='Remember me'/>
             <a href="/">Forgot Password?</a>
@@ -24,11 +26,11 @@
 
 <script>
 export default {
-    components: { GoogleIcon, CheckboxElement }
+    components: { GoogleIcon, CheckboxElement, InputElement, ButtonElement }
 }
-import './UI/InputElement.vue';
+import InputElement from './UI/InputElement.vue';
 import GoogleIcon from './icons/GoogleIcon.vue';
-import './UI/ButtonElement.vue'
+import ButtonElement from './UI/ButtonElement.vue';
 import CheckboxElement from './UI/CheckboxElement.vue';
 </script>
 

@@ -79,6 +79,7 @@ export default {
   
 
     &__title {
+        display: flex;
         margin-bottom: 8px;
         color: #344054;
         font-family: Inter;
@@ -89,6 +90,7 @@ export default {
     }
     &__input-wraper {
         position: relative;
+        margin-bottom: 20px;
     }
 
     &__input-svg {
