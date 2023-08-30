@@ -1,8 +1,8 @@
 <template>
     <label className="forms">
-          <span className="forms__title">{title}</span>
+          <span className="forms__title">{{title}}</span>
           <div className="forms__input-wraper">
-            <input type="inputType" className="forms__input" name="name" value="value" placeholder="placeholder" autocomplete="autocomplete" @input="handleInputChange" />
+            <input :type="inputType" className="forms__input" :name="name" :value="value" :placeholder="placeholder" autocomplete="autocomplete" @input="handleInputChange" />
             <div className="forms__input-svg">
                 <span v-if="type !== 'password'" @click="handleClearIcon" >
                     <ClearIcon />
@@ -21,27 +21,62 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
+import ClearIcon from '../icons/ClearIcon.vue';
+import EyeIcon from '../icons/EyeIcon.vue';
+import EyeDefault from '../icons/EyeDefault.vue'; 
+
 export default {
-    name: 'FormVue',
+    name: 'InputElement',
     props: {
-        msg: String
+        title: String,
+        type: String,
+        name: String,
+        placeholder: String
     },
-    
-}
-import '@/components/icons/ClearIcon.vue';
-import '@/components/icons/EyeIcon.vue';
-import '@/components/icons/EyeDefault.vue'
+    components: {
+        ClearIcon,
+        EyeIcon,
+        EyeDefault
+    },
+    setup(props) {
+        const value = ref("");
+        const showPassword = ref(false);
+        const handleInputChange = (e) => (
+            value.value = e.target.value
+        );
+
+        const handleClearIcon = () => (
+            value.value = ""
+        );
+
+        const handleTogglePassword = () => {
+            showPassword.value = !showPassword.value
+        };
+
+        const inputType = (() => showPassword.value ? "text" : props.type);
+
+        return {
+            value,
+            showPassword,
+            handleClearIcon,
+            handleInputChange,
+            handleTogglePassword,
+            inputType,
+            autocomplete: "off"
+        };
+
+    }
+};
+
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
     .forms {
     display: block;
-
-    &:not(:last-child) {
-        margin-bottom: 20px;
-    }
+  
 
     &__title {
         margin-bottom: 8px;

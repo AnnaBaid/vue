@@ -2,18 +2,18 @@
   <form className="form">
     <div className="form__title">NFT Access</div>
     <div className="form__desc">Please fill your detail to access your account.</div>
-    <Input title='Email' name='email' type='email' placeholder='Your email' />
-    <Input title='Password' name='password' type='password' placeholder='Your password' />
+    <InputElement title='Email' name='email' type='email' placeholder='Your email' />
+    <InputElement title='Password' name='password' type='password' placeholder='Your password' />
     <div className="row">
           <CheckboxElement desc='Remember me'/>
             <a href="/">Forgot Password?</a>
         </div>
         <div className="form__btn">
-          <Button className='btn _primary'>Sign in</Button>
-          <Button className='btn _secondary'> 
+          <ButtonElement className='btn _primary'>Sign in</ButtonElement>
+          <ButtonElement className='btn _secondary'> 
             <GoogleIcon />
             Sign in with Google
-          </Button>
+          </ButtonElement>
         </div>
         <div className="row _center">
           Don’t have an account?
@@ -24,13 +24,9 @@
 
 <script>
 export default {
-    name: 'FormVue',
-    props: {
-        msg: String
-    },
     components: { GoogleIcon, CheckboxElement }
 }
-import './UI/InputElement.vue'
+import './UI/InputElement.vue';
 import GoogleIcon from './icons/GoogleIcon.vue';
 import './UI/ButtonElement.vue'
 import CheckboxElement from './UI/CheckboxElement.vue';
